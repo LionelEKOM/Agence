@@ -27,6 +27,7 @@ class PropertyController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $property = new Property();
+        $property->setCreatedAt(new \DateTimeImmutable());
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 

@@ -36,14 +36,19 @@
                         </tr>
                         <tr>
                             <td>Chambre</td>
-                            <td>{{ property.bedroom }}</td>
+                            <td>{{ property.bedrooms }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="col-md-4">
+                <h2>Specificites</h2>
+                
+            </div>
         </div>
     
-        <table class="table">
+        {# <table class="table">
             <tbody>
                 <tr>
                     <th>City</th>
@@ -58,7 +63,7 @@
                     <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
             </tbody>
-        </table>
+        </table> #}
     
         <a href="{{ path('app_property_index') }}">back to list</a>
     

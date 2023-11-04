@@ -24,7 +24,7 @@
                                 <a href="{{ path('app_property_show', {id: property.id, slug: property.slug })}}">{{ property.title }}</a>
                             </h4>
                             <p class="card-text">{{ property.city }}</p>
-                            <div class="text-primary" style="font-weight: bold; font-size: 2rem">{{ property.price | number_format(0, '${.}', '${,}')}} FCFA</div>
+                            <div class="text-primary" style="font-weight: bold; font-size: 2rem">{{ property.price | number_format(0, '', ' ')}} FCFA</div>
                         </div>
                     </div>
                 </div>
