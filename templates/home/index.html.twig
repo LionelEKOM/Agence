@@ -6,7 +6,29 @@
     <div class="container py-3">
         <div class="text-center">
             <h1>Titre de votre contenu</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quaerat in consequuntur.</p>
+            <p class="bg-primary-subtle p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quaerat in consequuntur.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt eaque id expedita delectus, deleniti quia? Fuga autem quisquam maiores expedita eius, nobis, praesentium aperiam, mollitia voluptatibus debitis dolore possimus cupiditate.
+                Qui earum optio tenetur maxime et adipisci voluptatibus. Non vitae sint quas, atque rerum hic praesentium aperiam, quisquam iste ab corporis in. Hic fugiat, aperiam illum reiciendis quod voluptas. Labore.
+                Minima, nisi animi nesciunt, non illum maxime doloribus quis architecto laborum unde ad sunt blanditiis aliquam dolores iure. Est praesentium harum nostrum a excepturi. Optio enim exercitationem dolores cumque eligendi.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Les derniers Biens</h2>
+        <div class="row flex">
+            {% for property in properties %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('app_property_show', {id: property.id, slug: property.slug })}}">{{ property.title }}</a>
+                            </h4>
+                            <p class="card-text">{{ property.city }}</p>
+                            <div class="text-primary" style="font-weight: bold; font-size: 2rem">{{ property.price | number_format(0, '${.}', '${,}')}} FCFA</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

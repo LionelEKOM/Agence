@@ -43,10 +43,18 @@ class PropertyController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_property_show', methods: ['GET'])]
-    public function show(Property $property): Response
+    #[Route('/{slug}-{id}', name: 'app_property_show', requirements: ['slug' => '[a-z0-9\-]+'], methods: ['GET'])]
+
+    public function show(Property $property, string $slug): Response
     {
+        if ($property->getSlug() !== $slug) {
+            return $this->redirectToRoute('app_property_show', [
+                'id' => $property->getId(),
+                'slug' => $property->getSlug()
+            ], 301);
+        }
         return $this->render('property/show.html.twig', [
+            'current_menu' => 'properties',
             'property' => $property,
         ]);
     }
