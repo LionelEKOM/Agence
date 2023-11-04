@@ -1,0 +1,21 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+    <div class="col-md-4">{{form_row(form.title)}}</div>
+    <div class="col-md-4">{{ form_row(form.description) }}</div>
+    <div class="col-md-4">{{ form_row(form.surface) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.rooms) }}</div>
+    <div class="col-md-4">{{ form_row(form.bedrooms) }}</div>
+    <div class="col-md-4">{{ form_row(form.price) }}</div>
+</div>
+{{ form_row(form.city) }}
+{{ form_row(form.sold) }}
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        <a class="btn btn-warning" href="{{ path('app_admin_property_index') }}">Retour</a>
+    </div>
+</div>
+{{ form_end(form) }}
+

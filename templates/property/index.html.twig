@@ -35,7 +35,7 @@
                 <td>{{ property.sold ? 'Yes' : 'No' }}</td>
                 <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_property_show', {'id': property.id}) }}">show</a>
+                    <a href="{{ path('app_property_show', {'id': property.id, 'slug': property.slug }) }}">show</a>
                     <a href="{{ path('app_property_edit', {'id': property.id}) }}">edit</a>
                 </td>
             </tr>
