@@ -33,6 +33,15 @@
                             {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('app_property_index') }}">Acheter</a>
                         </li>
                     </ul>
+                    {% if app.user %}
+                    <div class="mb-3">
+                        <ul class="navbar-nav text-light">
+                            <li class="nav-item">
+                                <a href="{{ path('app_logout') }}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>

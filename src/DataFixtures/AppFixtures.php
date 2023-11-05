@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $property = new Property();
             $property->setTitle($faker->text(50));
             $property->setDescription($faker->text(200));
@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
             $manager->persist($property);
         }
 
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 25; $i++) {
             $user = new User();
             $user->setEmail($faker->unique()->email);
             $user->setRoles(['ROLE_USER']);
