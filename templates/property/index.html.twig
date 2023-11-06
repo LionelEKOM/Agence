@@ -3,6 +3,28 @@
 {% block title %}Property index{% endblock %}
 
 {% block body %}
+
+    {# jumbotron #}
+    <div class="container py-2 mt-2">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-1">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+                    <div class="row align-items-ceter">
+                        <div class="col">
+                            {{ form_row(form.minSurface) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(form.maxPrice) }}
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary">Recherche</button>
+                        </div>
+                    </div>
+                {{ form_end(form)}}
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <b>
             <h1 class="mt-3">Voir tous nos biens</h1>
@@ -19,6 +41,7 @@
                             </a>
                         </h5>
                         <p class="card-text">
+                            {{ property.surface}} m2-
                             {{ property.city }}
                         </p>
                         <div class="text-primary" style="font-weight: bold; font-size: 2rem">
