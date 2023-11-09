@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PropertySearchRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PropertySearchRepository::class)]
@@ -18,6 +19,16 @@ class PropertySearch
 
     #[ORM\Column(nullable: true)]
     private ?int $minSurface = null;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $options;
+
+    public function __construct()
+    {
+        $this->options = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -46,5 +57,21 @@ class PropertySearch
         $this->minSurface = $minSurface;
 
         return $this;
+    }
+
+    /**
+     * return ArrayCollection
+     */
+    public function getOptions(): ArrayCollection 
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param ArrayCollection $options
+     */
+    public function setOptions(ArrayCollection $options): void
+    {
+        $this->options = $options;
     }
 }

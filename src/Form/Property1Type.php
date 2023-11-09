@@ -2,9 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Option;
 use App\Entity\Property;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -82,6 +85,18 @@ class Property1Type extends AbstractType
                     'minMessage' => 'Le nom de la ville doit contenir au moins 2 caractères.',
                 ]),
             ],
+        ])
+        ->add('options', EntityType::class, [
+            'class' => Option::class,
+            'choice_label' => 'name',
+            'multiple' => true,
+            'required' => false, // Le champ n'est pas obligatoire
+            'constraints' => [
+                new Count(['min' => 1, 'minMessage' => 'Sélectionnez au moins une option.'])
+            ],
+            'attr' => [
+                'class' => 'select2',
+            ]
         ])
         ->add('sold', null, [
             'label' => 'Vendu',
