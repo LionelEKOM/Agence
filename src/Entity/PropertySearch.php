@@ -40,7 +40,7 @@ class PropertySearch
         return $this->maxPrice;
     }
 
-    public function setMaxPrice(?int $maxPrice): static
+    public function setMaxPrice(int $maxPrice): static
     {
         $this->maxPrice = $maxPrice;
 
@@ -52,7 +52,7 @@ class PropertySearch
         return $this->minSurface;
     }
 
-    public function setMinSurface(?int $minSurface): static
+    public function setMinSurface(int $minSurface): static
     {
         $this->minSurface = $minSurface;
 

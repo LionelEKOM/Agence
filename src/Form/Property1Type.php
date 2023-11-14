@@ -7,11 +7,16 @@ use App\Entity\Property;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+// use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 class Property1Type extends AbstractType
 {
@@ -97,6 +102,18 @@ class Property1Type extends AbstractType
             'attr' => [
                 'class' => 'select2',
             ]
+        ])
+
+        ->add('imageFile', FileType::class, [
+            'required' => false,
+            'label' => "Image (JPEG ou PNG)",
+            'constraints' => [
+                new Assert\File([
+                    'maxSize' => '5M', // Limite la taille du fichier à 5 Mo (vous pouvez ajuster cette valeur)
+                    'mimeTypes' => ['image/jpeg', 'image/png', 'image/jpg'], // Les types MIME autorisés
+                    'mimeTypesMessage' => 'Veuillez télécharger un fichier JPEG ou PNG valide.',
+                ]),
+            ],
         ])
         ->add('sold', null, [
             'label' => 'Vendu',

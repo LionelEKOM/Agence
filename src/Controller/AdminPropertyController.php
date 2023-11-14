@@ -7,6 +7,7 @@ use App\Form\Property1Type;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +30,8 @@ class AdminPropertyController extends AbstractController
         $property->setCreatedAt(new \DateTimeImmutable());
         $form = $this->createForm(Property1Type::class, $property);
         $form->handleRequest($request);
+
+        if ($property->getImageFile() instanceof UploadedFile)
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($property);

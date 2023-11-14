@@ -35,9 +35,9 @@ class PropertySearchType extends AbstractType
                     ],
                     'constraints' => [
                         new Regex([
-                            'pattern' => '/^10\d*$/', // Commence par "10" suivi de chiffres
-                            'message' => 'La surface minimale doit commencer par "40".'
-                        ])
+                            'pattern' => '/^\d+$/', // Utilise une expression régulière pour vérifier les chiffres uniquement
+                            'message' => 'Entrez uniquement des chiffres.',
+                        ]),
                     ]
                 ])
                 ->add('options', EntityType::class, [
@@ -45,7 +45,10 @@ class PropertySearchType extends AbstractType
                     'choice_label' => 'name',
                     'multiple' => true,
                     'required' => false,
-                    'label' => false
+                    'label' => false, 
+                    'attr' => [
+                        'class' => 'select2'
+                    ]
                 ])
         ;
 
